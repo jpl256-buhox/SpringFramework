@@ -25,4 +25,10 @@ public class UserService {
 		return userRepository.findById(userId).orElseThrow(
 				()-> new ResponseStatusException(HttpStatus.NOT_FOUND,String.format("user %d not found", userId)));
 	}
+	
+	public User getUserByUsername(String username) {
+		return userRepository.findByUsername(username).orElseThrow(
+				()-> new ResponseStatusException(HttpStatus.NOT_FOUND,String.format("user %d not found", username)));
+	}
+
 }
