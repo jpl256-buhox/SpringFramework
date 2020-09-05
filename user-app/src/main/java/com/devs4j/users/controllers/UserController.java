@@ -19,6 +19,9 @@ import com.devs4j.users.entity.User;
 import com.devs4j.users.services.UserService;
 
 import io.micrometer.core.annotation.Timed;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/users")
@@ -29,6 +32,11 @@ public class UserController {
 	
 	@GetMapping
 	@Timed("get.users")
+	@ApiOperation(value="Get list of users", response=User.class)
+	@ApiResponses(value={
+			@ApiResponse(code = 200, message = "The record was found"),
+			@ApiResponse(code = 400, message = "The record was not found")
+	})
 	public ResponseEntity<Page<User>> getUsers(@RequestParam(required = false, value="page", defaultValue = "0") int page, @RequestParam(required = false, value="size", defaultValue="1000") int size){
 		return new ResponseEntity<>(userService.getUsers(page,size),HttpStatus.OK);
 	}
