@@ -29,7 +29,6 @@ public class UserAppApplication implements ApplicationRunner{
 			User user = new User();
 			user.setUsername(faker.name().username());
 			user.setPassword(faker.dragonBall().character());
-			user.setProfile(null);
 			userRepository.save(user);
 		}
 		
