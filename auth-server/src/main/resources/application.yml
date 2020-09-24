@@ -1,0 +1,30 @@
+server:  
+  port: 9998
+  
+spring:  
+  application:
+    name: auth-server
+     
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://cfecontigodev.cfe.mx:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
+   
+   
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health
+      base-path: /      
+      
+##logging:
+##  level:
+##    org.springframework.security: DEBUG
+
+
+    
+      
